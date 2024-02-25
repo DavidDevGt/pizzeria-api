@@ -36,7 +36,7 @@ class User {
         $data['username'] = sanitizeString($data['username']);
 
         // Encriptación de la contraseña
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $data['password'] = $this->hashPassword($data['password']);
 
         // Insertar el nuevo usuario
         return $this->db->dbQueryInsert($this->table, $data);
@@ -47,11 +47,19 @@ class User {
         foreach ($data as $key => $value) {
             // Sanitización de cada valor
             $sanitizedValue = sanitizeString($value);
+            if ($key === 'password') {
+                // Encriptación de la contraseña
+                $sanitizedValue = $this->hashPassword($sanitizedValue);
+            }
             $setPart[] = "$key = '$sanitizedValue'";
         }
         $setPartString = implode(', ', $setPart);
         $query = "UPDATE {$this->table} SET $setPartString WHERE id = $id AND active = 1";
         return $this->db->dbQuery($query);
+    }
+
+    private function hashPassword($password) {
+        return password_hash($password, PASSWORD_DEFAULT);
     }
 
     public function delete($id) {
