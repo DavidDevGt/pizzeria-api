@@ -1,0 +1,11 @@
+{
+    "name": "developer/pizzeria-api",
+    "description": "Api pizzeria",
+    "authors": [
+        {
+            "name": "DavidDevGt",
+            "email": "josuedavidvl18@gmail.com"
+        }
+    ],
+    "require": {}
+}
