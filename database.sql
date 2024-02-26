@@ -199,3 +199,18 @@ BEGIN
 END //
 DELIMITER ;
 
+INSERT INTO users (username, email, password) VALUES ('santi', 'santi@ejemplo.com', '55sssss!!!');
+INSERT INTO users (username, email, password) VALUES ('devasd', 'devasd@ejemplo.com', 'elasdoas123');
+INSERT INTO users (username, email, password) VALUES ('juanjo', 'juanjo@ejemplo.com', 'password123');
+
+INSERT INTO customers (name, phone, address, user_id) VALUES ('Cliente 1', '84845555', 'Calle Real 1ra Parada, Ciudad', 1);
+INSERT INTO customers (name, phone, address, user_id) VALUES ('Cliente 2', '22229090', 'Calle 2, Ciudad de Inés', 2);
+
+INSERT INTO employees (name, role, user_id) VALUES ('Empleado 1', 'chef', 1);
+INSERT INTO employees (name, role, user_id) VALUES ('Empleado 2', 'delivery', 3);
+
+INSERT INTO deliveries (employee_id, delivery_time, status, user_id) VALUES (2, '2024-02-22 18:25:00', 'pending', 3);
+INSERT INTO deliveries (employee_id, delivery_time, status, user_id) VALUES (2, '2024-02-26 19:00:00', 'completed', 3);
+
+INSERT INTO orders (customer_id, order_details, status, delivery_id, user_id) VALUES (1, 'Pizza 4 Estaciones, Pizza Pepperoni', 'pending', 1, 1);
+INSERT INTO orders (customer_id, order_details, status, delivery_id, user_id) VALUES (2, 'Pizza Vegetariana', 'in_delivery', 2, 2);
